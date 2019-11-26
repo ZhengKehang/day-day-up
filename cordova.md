@@ -109,8 +109,8 @@ cordova plugin add g:/cordova/demo
 文件地址：config/index.js 
 ```
 build: {
-  index: path.resolve(__dirname, '../../../cordova/cloudpmsdk/www/index.html'),//模板 
-  assetsRoot: path.resolve(__dirname, '../../../cordova/cloudpmsdk/www'),//打包后文件要存放的路径
+  index: path.resolve(__dirname, '../../../cordova/cloudpmsdk/www/index.html'),//模板地址
+  assetsRoot: path.resolve(__dirname, '../../../cordova/cloudpmsdk/www'),//打包后文件要存放的路径（根据本地地址调整）
   assetsSubDirectory: 'static',//除了 index.html 之外的静态资源要存放的路径，
   assetsPublicPath: './',//代表打包后，index.html里面引用资源的的相对地址
   productionSourceMap: true,
@@ -132,6 +132,9 @@ call cordova run android
 使用脚本，运行后删除旧包生成一个新的包
 ```
 g:
+cd engineering\cloudpm
+call npm run build
+cd /
 cd cordova\cloudpmsdk\platforms\android\app\build\outputs\apk\debug
 del app-debug.apk
 cd \
