@@ -17,7 +17,7 @@
 * 工作效率高、喜欢弹性工作
 
 ## 技术栈
-[技术栈](../images/mine/tools.jpg)
+![技术栈](../images/mine/tools.jpg)
 ### 项目实战
 * vue/uniapp/taro(react小程序框架)/wepy/小程序原生
 * es6/jquery/css/less/html
