@@ -9,7 +9,6 @@ ES5只有全局作用域，函数作用域，没有块级作用域。
 #### 作用域链的作用：
 * 搜索标识符:在函数执行过程中，每遇到一个变量，都会经历一次标识符解析过程以决定从哪里获取和存储数据。该过程从作用域链头部，也就是从活动对象开始搜索，查找同名的标识符，如果找到了就使用这个标识符对应的变量，
 如果没找到继续搜索作用域链中的下一个对象，如果搜索完所有对象都未找到，则认为该标识符未定义；
-* 活动对象被其内部函数的作用域链所引用执行环境被销毁，其关联的活动对象并不会随之销毁；
 * js函数内的变量值不是在编译的时候就确定的，而是等在运行时期再去寻找的。
 #### 闭包
 ```js
@@ -35,8 +34,16 @@ Object:
 	object{} typeof => 'object'
 	array[] typeof => 'object'
 	fuction typeof => 'fuction'
+		object{} instanceof Object => true
+    	array[] instanceof Array  => true
+    	fuction instanceof Function => true
+    	regExp instanceof RegExp => true
 ```
-
+:::tip
+有些浏览器中，正则使用typeof返回function。
+typeof 检测[[Call]]方法
+instanceof 检测原型链判断构造函数
+:::
 
 ## 什么是面向对象编程？
 * 抽象事物的特征封装为方法和属性，能够复用的编程思维。
@@ -101,7 +108,7 @@ add.call(this, 1, 2) // 3
 ###### apply()
 apply方法的作用与call方法类似，也是改变this指向，然后再调用该函数。唯一的区别就是，它接收一个数组作为函数执行时的参数
 ```js
-func.apply(thisValue, [arg1, arg2, ...])
+func.apply(thisValue, [arg1, arg2, ...]);
 function f(x, y){
   console.log(x + y);
 }
@@ -113,7 +120,7 @@ f.apply(null, [1, 1]) ;// 2
 ```js
 var a = [10, 2, 4, 15, 9];
 Math.max.apply(null, a) // 15
-Array.apply(null, ['a', ,'b'])
+Array.apply(null, ['a', ,'b']);
 // [ 'a', undefined, 'b' ] forEach方法跳过空空元素
 //可以将一个类似数组的对象（比如arguments对象）转为真正的数组 
 Array.prototype.slice.apply({0: 1, length: 1}); // [1]
