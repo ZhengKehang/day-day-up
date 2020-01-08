@@ -12,10 +12,10 @@
 ### 经验总结
 成长：熟悉了vue项目整体的构建，沉淀运用了一套较为成熟的项目构建。
 不足：对于原有的技术框架不够熟悉，在重构时走了写弯路。
-* [移动端自适应解决方案](../knowledge/自适应布局解决方案.md)
-* [模块化开发](../knowledge/从合并HSE页面浅谈模块化开发.md) 
-* [git相关](../knowledge/git相关.md)
-* [nginx](../knowledge/nginx.md)
+* [移动端自适应解决方案](../knowledge/css/自适应布局解决方案.md)
+* [模块化开发](../knowledge/project/从合并HSE页面浅谈模块化开发.md) 
+* [git相关](../knowledge/base/git.md)
+* [nginx](../knowledge/base/nginx.md)
 
 ## 客户营销 APP 开发	
 

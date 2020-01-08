@@ -1,3 +1,4 @@
+# typescript梳理
 ## 基本类型
 number,string,boolean,null,undefined,symbol,array[],object{}
 enum,any,void

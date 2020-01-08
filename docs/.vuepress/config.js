@@ -5,9 +5,11 @@ module.exports = {
   description: '所以我们不丧胆，外体虽然一天天毁坏，内心却一天新似一天。',
   head: [
     // 页面icon
-    ['link', { rel: 'icon', href: '/icon.png' }]
+    ['link', { rel: 'icon', href: '/icon.png' }],
+    ['meta', { name: 'theme-color', content: '#7cb0fa' }],
+    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
   ],
-
   // 端口号
   port: 3000,
   markdown: {
@@ -31,18 +33,7 @@ module.exports = {
           ]
         }
       ],
-      '/knowledge/':[
-        {
-          title: '积累知识',
-          collapsable: false,
-          children: [
-              '',
-              'ES5',
-              'vue的生命周期',
-              'cordova'
-          ]
-        }
-      ]
+      '/knowledge/':getKonwledge()
     },
     // 仓库地址
     repo: 'https://github.com/ZhengKehang/ZhengKehang.github.io.git',
@@ -68,3 +59,30 @@ module.exports = {
     }
   }
 };
+function getKonwledge() {
+  return [
+    {
+      title: '积累知识',
+      collapsable: false,
+      children: [
+        ''
+      ]
+    },
+    {
+      title: '语言',
+      collapsable: false,
+      children: [
+        'js/ES5知识梳理',
+        'js/array',
+        'js/class',
+        'js/function',
+        'js/node',
+        'js/typescript',
+        'css/BFC',
+        'css/居中吧少年',
+        'css/自适应布局解决方案',
+        'css/重绘与回流'
+      ]
+    }
+  ]
+}

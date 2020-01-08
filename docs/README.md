@@ -2,7 +2,7 @@
 home: true
 lang: zh-CN
 heroText: 个人博客
-heroImage: /logo.jpg
+heroImage: /us.jpg
 actionText: 开始 →
 actionLink: /knowledge/ 
 features:

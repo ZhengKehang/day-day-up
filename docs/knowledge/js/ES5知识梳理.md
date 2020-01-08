@@ -5,7 +5,7 @@ ES5只有全局作用域，函数作用域，没有块级作用域。
 :::
 #### 什么是作用域链？
 定义函数对象时生成[[scope]]属性指向定义它时的作用域空间，运行函数是创建运行期上下文(execution context)——内部运行环境的对象，它也生成一个[[scope]]属性，指向推入活动对象(activation object)的函数对象的[[scope]]属性。
-![[作用域链示意图]](@images/language/link.jpg)
+![[作用域链示意图]](../../images/language/link.jpg)
 #### 作用域链的作用：
 * 搜索标识符:在函数执行过程中，每遇到一个变量，都会经历一次标识符解析过程以决定从哪里获取和存储数据。该过程从作用域链头部，也就是从活动对象开始搜索，查找同名的标识符，如果找到了就使用这个标识符对应的变量，
 如果没找到继续搜索作用域链中的下一个对象，如果搜索完所有对象都未找到，则认为该标识符未定义；
@@ -24,7 +24,7 @@ fn();
 ```
 像上面这种内部函数的作用域链仍然保持着对父函数活动对象的引用，就是闭包(closure)
 ## 数据类型
-```
+```sh
 Boolean typeof => 'boolean'
 String typeof => 'string'
 Number typeof => 'number'
@@ -34,10 +34,10 @@ Object:
 	object{} typeof => 'object'
 	array[] typeof => 'object'
 	fuction typeof => 'fuction'
-		object{} instanceof Object => true
-    	array[] instanceof Array  => true
-    	fuction instanceof Function => true
-    	regExp instanceof RegExp => true
+	object{} instanceof Object => true
+    array[] instanceof Array  => true
+    fuction instanceof Function => true
+    regExp instanceof RegExp => true
 ```
 :::tip
 有些浏览器中，正则使用typeof返回function。
@@ -97,7 +97,7 @@ this的指向是不确定的，所以切勿在函数中包含多层的this
 JavaScript 提供了call、apply、bind这三个方法，来切换/固定this的指向
 ###### call()
 call的第一个参数就是this所要指向的那个对象，后面的参数则是函数调用时所需的参数。call绑定的是this对象，执行的还是原始方法
-```js
+```javascript
 func.call(this, arg1, arg2, ...);
 function add(a, b) {
   return a + b;
@@ -191,3 +191,35 @@ function extend(Child, Parent) {
   　　}
 }
 ```
+
+## Promise
+### 状态
+* pending（进行中）、fulfilled（已成功）和rejected（已失败）
+## catch
+```javascript
+// bad
+promise
+  .then(function(data) {
+    // success
+  }, function(err) {
+    // error
+  });
+
+// good
+promise
+  .then(function(data) { //cb
+    // success
+  })
+  .catch(function(err) {
+    // error
+  });
+```
+:::tip
+理由是第二种写法可以捕获前面then方法执行中的错误，也更接近同步的写法（try/catch）。因此，建议总是使用catch方法，而不使用then方法的第二个参数。
+:::
+### Promise.all()
+传入一组promise对象，等待所有对象都变成fulfilled，它的状态置为fulfilled
+:::tip
+如果有一个对象被rejected了，它的状态为rejected。
+但是如果作为参数的 Promise 实例，自己定义了catch方法，那么它一旦被rejected，该实例执行完catch方法后，也会变成resolved。并不会触发Promise.all()的catch方法。
+:::

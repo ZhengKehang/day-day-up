@@ -10,7 +10,7 @@ let origin = "奴隶社会,非洲,古埃及文明,金字塔\n" +
     ",,,公历";
 function str2json(str) {
     //根据/n先切分数组 endArray[]
-    let originA = str.split('/n')
+    let originA = str.replace(/\n/g,'end').split('end');
     //根据逗号切分数组 originAs[[]]
     let originAs = originA.map(item=>{
         return item.split(',')
@@ -32,18 +32,41 @@ function str2json(str) {
     });
     //倒序将每个项整合
     let getA = dealAs.map(item=>{
-        for (let i = item.length;i>1;i--){
+        for (let i = item.length;i>0;i--){
             let dealKey = item[i];
             let preObj = item[i-1];
-            Object.keys(preObj).forEach(preKey=>{
-                preObj[preKey].push(dealKey);
-            });
+            toKeyArray(preObj,dealKey,1);
         }
         return item[0]
     });
     //根据numberArray倒叙将每一项放到对应位置
     for (let i = numberA.length;i>1;i--){
         let num = numberA[i];
-        //找到比自己小的上一级number将其放入
+        //找到比自己小的上一级number将其放入对应的数组中
+        let j = getNearNumber(num,numberA.slice(0,num));
+        debugger
+        toKeyArray(getA[j],getA[i],num-numberA[j]);
+    }
+    return getA[0];
+}
+function getNearNumber(num,array) {
+    for (let i = array.length;i>0;i--){
+        let next = array[i];
+        if(num>next){
+            return i;
+        }
     }
 }
+function toKeyArray(to,from,distance) {
+    let firstKey = getFirstKey(to);
+    if(distance===1){
+        to[firstKey].push(from)
+    }else{
+        distance--;
+        toKeyArray(to[firstKey][0],from,distance)
+    }
+}
+function getFirstKey(obj) {
+    return  Object.keys(obj)[0]
+}
+str2json(origin);
