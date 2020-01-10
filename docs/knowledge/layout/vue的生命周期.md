@@ -2,6 +2,7 @@
 ## beforeCreate
 在vue实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。
 ### 实例化之前做了什么？
+html/css/js资源的加载
 
 ### 那么实例化是做了什么呢？
 
