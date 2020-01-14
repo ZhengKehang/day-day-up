@@ -11,7 +11,6 @@
 * [Typescript](js/typescript.md)
 ### Html/CSS
 * [BFC](css/BFC.md)
-* [居中吧少年](css/居中吧少年.md)
 * [自适应布局解决方案](css/自适应布局解决方案.md)
 * [重绘与回流](css/重绘与回流.md)
 
@@ -20,17 +19,16 @@
 ## 基础
 
 ### 网络基础
-* [浏览器相关](layout/cordova.md)
 * [http协议](layout/cordova.md)
+* [浏览器相关知识梳理](base/浏览器相关知识梳理.md)
 
 ### 数据结构与算法
-* [数据结构与算法](layout/cordova.md)
+* [数据结构与算法](base/数据结构算法.md)
 
-###工具
+## 工具
 * [Git相关](base/git.md)
 * [nginx](base/nginx.md)
 * [webpack](base/webpack.md)
-* [浏览器相关知识梳理](base/浏览器相关知识梳理.md)
 
 ## 框架
 
@@ -43,16 +41,18 @@
 
 ### 原生相关
 
-* [flutter学习笔记](layout/flutter学习笔记.md)
 * [cordova安装及插件介绍](layout/cordova.md)
+* [flutter学习笔记](layout/flutter学习笔记.md)
 
 ### UI框架及组件
 
-## 项目经验积累
+## 项目经验
+
 * [从合并HSE页面浅谈模块化开发](project/从合并HSE页面浅谈模块化开发.md)
 * [用脚本实现国际化文件生成](project/国际化文件生成.md)
 
 ## 面试题
+
 * [算法面试题](interview/算法面试题.md)
 
 

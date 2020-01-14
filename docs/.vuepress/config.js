@@ -79,9 +79,58 @@ function getKonwledge() {
         'js/node',
         'js/typescript',
         'css/BFC',
-        'css/居中吧少年',
         'css/自适应布局解决方案',
         'css/重绘与回流'
+      ]
+    }
+    ,
+    {
+      title: '基础',
+      collapsable: false,
+      children: [
+        'layout/cordova',
+        'base/浏览器相关知识梳理',
+        'base/数据结构算法'
+      ]
+    }
+    ,
+    {
+      title: '工具',
+      collapsable: false,
+      children: [
+        'base/git',
+        'base/nginx',
+        'base/webpack'
+      ]
+    }
+    ,
+    {
+      title: '框架',
+      collapsable: false,
+      children: [
+        'layout/vue的生命周期',
+        'layout/新建vue项目',
+        'layout/vue-loader',
+        'layout/小程序框架思考',
+        'layout/cordova',
+        'layout/flutter学习笔记'
+      ]
+    }
+    ,
+    {
+      title: '项目经验',
+      collapsable: false,
+      children: [
+        'project/从合并HSE页面浅谈模块化开发',
+        'project/国际化文件生成'
+      ]
+    }
+    ,
+    {
+      title: '面试题',
+      collapsable: false,
+      children: [
+        'interview/算法面试题'
       ]
     }
   ]
