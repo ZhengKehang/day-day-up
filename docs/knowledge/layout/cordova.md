@@ -156,3 +156,5 @@ call cordova build android
 ::: tip 进一步设想
 将热更新地址指向本地，实现本地编译手机端直接更新
 :::
+
+$ cordova run ios --emulator --target=iPhone-8
