@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="treeCanvas" width="800" height="500"></canvas>
+
+</body>
+</html>
+<script>
+    const init = () => {
+        const c = document.getElementById('treeCanvas');
+        const ctx=c.getContext("2d");
+        // 坐标系变化
+        ctx.translate(0,ctx.canvas.height);
+        ctx.scale(1,-1);
+        ctx.lineCap = 'round';
+        drawTree(ctx, [250, 0], 80, Math.PI / 4, 20, 3)
+    }
+    const drawTree = (ctx, start, length, roate, lineWidth, random) => {
+        ctx.lineWidth = lineWidth;
+        ctx.beginPath();
+        ctx.moveTo(...start);
+        const x = Math.cos(roate) * length + start[0];
+        const y = Math.sin(roate) * length + start[1];
+        const end = [x, y];
+        ctx.lineTo(...end);
+        ctx.stroke();
+        if(lineWidth > 2) {
+            // 随机偏移
+            const left = Math.PI / 4 + 0.5 * (roate + 0.2) + random * (Math.random() - 0.5);
+            drawTree(ctx, end, length * 0.9, left, lineWidth * 0.7, random * 0.9);
+            const right = Math.PI / 4 + 0.5 * (roate - 0.2) + random * (Math.random() - 0.5);
+            drawTree(ctx, end, length * 0.9, right, lineWidth * 0.7, random * 0.9);
+        }
+        if(lineWidth < 10 && Math.random() < 0.3) {
+            ctx.save();
+            ctx.strokeStyle = '#c72c35';
+            const th = Math.random() * 6 + 3;
+            ctx.lineWidth = th;
+            ctx.beginPath();
+            ctx.moveTo(...end);
+            ctx.lineTo(end[0] - 1, end[1] - 2);
+            ctx.stroke();
+            ctx.restore();
+        }
+    }
+    init();
+</script>
