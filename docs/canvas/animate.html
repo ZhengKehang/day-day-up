@@ -1,0 +1,56 @@
+<html>
+<body>
+<canvas id="myCanvas" width="500" height="500" />
+</body>
+</html>
+
+<script>
+    var sun = new Image();
+    var moon = new Image();
+    var earth = new Image();
+    function init(){
+        sun.src = 'https://img1.baidu.com/it/u=621468372,3015886449&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=511';
+        moon.src = 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fku.90sjimg.com%2Felement_origin_min_pic%2F18%2F07%2F04%2Fd7b7dda2f6217c24a29736763fffd615.jpg%21%2Ffwfh%2F804x804%2Fquality%2F90%2Funsharp%2Ftrue%2Fcompress%2Ftrue&refer=http%3A%2F%2Fku.90sjimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663228804&t=75bf5d97b287bdeb6192bd115fe08366';
+        earth.src = 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F6520150605%2F641.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663228837&t=752322a3667ba15fb31ac531891cf489';
+        window.requestAnimationFrame(draw);
+    }
+
+    function draw() {
+        var ctx = document.getElementById('myCanvas').getContext('2d');
+
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.clearRect(0,0,300,300); // clear canvas
+
+        ctx.fillStyle = 'rgba(0,0,0,0.4)';
+        ctx.strokeStyle = 'rgba(0,153,255,0.4)';
+        ctx.save();
+        ctx.translate(150,150);
+
+        // Earth
+        var time = new Date();
+        ctx.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
+        ctx.translate(105,0);
+        // ctx.fillRect(0,-12,50,24); // Shadow
+        ctx.drawImage(earth,-12,-12, 40, 40);
+
+        // Moon
+        ctx.save();
+        ctx.rotate( ((2*Math.PI)/6)*time.getSeconds() + ((2*Math.PI)/6000)*time.getMilliseconds() );
+        ctx.translate(0,28.5);
+        ctx.drawImage(moon,-3.5,-3.5, 10, 10);
+        ctx.restore();
+
+        ctx.restore();
+
+        ctx.beginPath();
+        ctx.arc(150,150,105,0,Math.PI*2,false); // Earth orbit
+        ctx.stroke();
+
+        ctx.drawImage(sun,0,0,300,300);
+
+        window.requestAnimationFrame(draw);
+    }
+
+    init();
+
+</script>

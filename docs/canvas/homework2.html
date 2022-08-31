@@ -1,0 +1,204 @@
+<html>
+<body>
+<canvas id="myCanvas" width="500" height="500" style="border:1px solid #acacac" />
+</body>
+</html>
+
+<script>
+    function draw() {
+        const canvas = document.getElementById('myCanvas');
+        if (canvas.getContext){
+            const ctx = canvas.getContext('2d');
+
+            roundedRect(ctx, 12, 12, 180, 180, 15);
+            roundedRect(ctx, 19, 19, 166, 166, 9);
+            roundedRect(ctx, 53, 53, 49, 33, 10);
+            roundedRect(ctx, 53, 119, 49, 16, 6);
+            roundedRect(ctx, 135, 53, 49, 33, 10);
+            roundedRect(ctx, 135, 119, 25, 49, 10);
+
+            ctx.beginPath();
+            ctx.arc(37, 37, 13, Math.PI / 7, -Math.PI / 7, false);
+            ctx.lineTo(31, 37);
+            ctx.fill();
+
+            for(let i = 0; i < 8; i++){
+                ctx.fillRect(51 + i * 16, 35, 4, 4);
+            }
+
+            for(let i = 0; i < 6; i++){
+                ctx.fillRect(115, 51 + i * 16, 4, 4);
+            }
+
+            for(let i = 0; i < 8; i++){
+                ctx.fillRect(51 + i * 16, 99, 4, 4);
+            }
+
+            ctx.beginPath();
+            ctx.moveTo(83, 116);
+            ctx.lineTo(83, 102);
+            ctx.bezierCurveTo(83, 94, 89, 88, 97, 88);
+            ctx.bezierCurveTo(105, 88, 111, 94, 111, 102);
+            ctx.lineTo(111, 116);
+            ctx.lineTo(106.333, 111.333);
+            ctx.lineTo(101.666, 116);
+            ctx.lineTo(97, 111.333);
+            ctx.lineTo(92.333, 116);
+            ctx.lineTo(87.666, 111.333);
+            ctx.lineTo(83, 116);
+            ctx.fill();
+
+            ctx.fillStyle = "white";
+            ctx.beginPath();
+            ctx.moveTo(91, 96);
+            ctx.bezierCurveTo(88, 96, 87, 99, 87, 101);
+            ctx.bezierCurveTo(87, 103, 88, 106, 91, 106);
+            ctx.bezierCurveTo(94, 106, 95, 103, 95, 101);
+            ctx.bezierCurveTo(95, 99, 94, 96, 91, 96);
+            ctx.moveTo(103, 96);
+            ctx.bezierCurveTo(100, 96, 99, 99, 99, 101);
+            ctx.bezierCurveTo(99, 103, 100, 106, 103, 106);
+            ctx.bezierCurveTo(106, 106, 107, 103, 107, 101);
+            ctx.bezierCurveTo(107, 99, 106, 96, 103, 96);
+            ctx.fill();
+
+            ctx.fillStyle = "black";
+            ctx.beginPath();
+            ctx.arc(101, 102, 2, 0, Math.PI * 2, true);
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(89, 102, 2, 0, Math.PI * 2, true);
+            ctx.fill();
+        }
+    }
+
+    // 封装的一个用于绘制圆角矩形的函数。
+
+    function roundedRect(ctx, x, y, width, height, radius){
+        ctx.beginPath();
+        ctx.moveTo(x, y + radius);
+        ctx.lineTo(x, y + height - radius);
+        ctx.quadraticCurveTo(x, y + height, x + radius, y + height);
+        ctx.lineTo(x + width - radius, y + height);
+        ctx.quadraticCurveTo(x + width, y + height, x + width, y + height - radius);
+        ctx.lineTo(x + width, y + radius);
+        ctx.quadraticCurveTo(x + width, y, x + width - radius, y);
+        ctx.lineTo(x + radius, y);
+        ctx.quadraticCurveTo(x, y, x, y + radius);
+        ctx.stroke();
+    }
+
+    function draw1() {
+        const ctx = document.getElementById('myCanvas').getContext('2d');
+        for (let i=0;i<6;i++){
+            for (let j=0;j<6;j++){
+                ctx.fillStyle = 'rgb(' + Math.floor(255-42.5*i) + ',' +
+                    Math.floor(255-42.5*j) + ',0)';
+                ctx.fillRect(j*25,i*25,25,25);
+            }
+        }
+    }
+    function draw2() {
+        const ctx = document.getElementById('myCanvas').getContext('2d');
+        ctx.fillStyle = '#7ca';
+        const pointX = [0, 0, 100];
+        const pointY = [0, 100, 0];
+        ctx.save();
+        ctx.translate(- pointX.reduce((pre, next) => pre + next) / 3, - pointY.reduce((pre, next) => pre + next) / 3);
+        ctx.beginPath();
+        for (let i = 0; i < pointX.length; i++) {
+            const point = [pointX[i] + ctx.canvas.width / 2, pointY[i] + ctx.canvas.height / 2]
+            i === 0 ? ctx.moveTo(...point)
+             : ctx.lineTo(...point);
+        }
+        ctx.fill();
+        ctx.restore();
+
+        const radius = 100 / 4;
+        ctx.fillStyle = '#e77';
+        ctx.beginPath();
+        ctx.arc(ctx.canvas.width / 2, ctx.canvas.height / 2, radius,  0, 2 * Math.PI);
+        ctx.fill();
+
+    }
+
+    function draw3() {
+        const ctx = document.getElementById('myCanvas').getContext('2d');
+        const img = new Image();
+        img.onload = function(){
+            ctx.drawImage(img,0,0, 500, 500);
+            ctx.beginPath();
+            ctx.moveTo(30,96);
+            ctx.lineTo(70,66);
+            ctx.lineTo(103,76);
+            ctx.lineTo(170,15);
+            ctx.stroke();
+        }
+        img.src = 'https://fe-cloud.uni-ubi.com/image/1660630008838-5pro.jpg?x-oss-process=img/q/80';
+    }
+
+
+    function combination(source = [], selectedLimit) {
+        if (!Array.isArray(source)) return source
+
+        // remove duplicated item
+        source = [...new Set(source)]
+        selectedLimit = selectedLimit || source.length
+
+        const result = []
+        const sourceLen = source.length
+
+        selectedLimit = selectedLimit > sourceLen ? sourceLen : selectedLimit
+
+        const innerLoop = (prefix = [], done = [], index = 0) => {
+            const prefixLen = prefix.length
+
+            for (let i = index; i < sourceLen; i++) {
+
+                if (prefixLen > selectedLimit - 1) break
+
+                // Optimization: Continue to next cycle if current item has be already used for 'prefix'.
+                if (done.includes(i)) continue
+
+                const item = source[i]
+                const newItem = [...prefix, item]
+
+                if (prefixLen === selectedLimit - 1) {
+                    result.push(newItem)
+                }
+
+                if (prefixLen < selectedLimit - 1) {
+                    innerLoop(newItem, [...done, i], index++)
+                }
+
+            }
+        }
+
+        if (source.length) {
+
+            // there is only one case if we want to select all items from source by combination.
+            if (selectedLimit === sourceLen) {
+                return source
+            }
+
+            innerLoop()
+        }
+
+        return result
+    }
+
+
+    const initTwo = (list) => {
+        const origin = combination(list, 2);
+        return back;
+    }
+    // draw();
+
+    // draw1();
+
+    // draw2();
+
+    // draw3();
+
+</script>

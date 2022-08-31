@@ -1,0 +1,59 @@
+<html>
+<body>
+
+<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <rect x="10"
+          y="10"
+          width="50"
+          height="10"
+          fill="blue"
+          fill-opacity="0.7"
+          stroke="green"
+          stroke-width="2"
+          stroke-opacity="0.7"
+    />
+    <rect x="10"
+          y="30"
+          rx="20"
+          ry="10"
+          width="50"
+          height="50"
+          style="fill: green;stroke: blue;opacity: 0.7;"
+    />
+    <circle cx="150"
+            cy="50"
+            r="40"
+            stroke="black"
+            stroke-width="2"
+            fill="red"
+    />
+    <ellipse cx="60" cy="120" rx="50" ry="30" style="fill:purple"/>
+    <ellipse cx="60" cy="160" rx="50" ry="20" style="fill:lime"/>
+    <ellipse cx="60" cy="200" rx="50" ry="15" style="fill:yellow"/>
+    <line x1="0" y1="0" x2="50" y2="50" stroke="red" stroke-width="2" />
+    <polygon points="200,10 250,190 160,210"
+             style="fill:lime;stroke:purple;stroke-width:1"/>
+    <polyline points="0,40 40,40 40,80 80,80 80,120 120,120 120,160"
+              style="fill:none;stroke:red;stroke-width:4" />
+    <path d="M 100 350 q 150 100 300 0" stroke="blue"
+          stroke-width="5" fill="none" />
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path id="path1" d="M75,20 a1,1 0 0,0 100,0" />
+    </defs>
+    <text x="10" y="100" style="fill:red;">
+        <textPath xlink:href="#path1">I love S V G I love S V G</textPath>
+    </text>
+</svg>
+<svg width="320" height="320" xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <text font-family="microsoft yahei" font-size="120" y="160" x="160">
+            SVG
+            <animate attributeName="x" from="160" to="60" begin="0s" dur="3s" repeatCount="indefinite" />
+        </text>
+    </g>
+</svg>
+</body>
+</html>

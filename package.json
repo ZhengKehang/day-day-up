@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "echarts": "^4.6.0",
-    "less": "^3.10.3",
+    "less": "^4.1.2",
     "vuepress": "^1.2.0"
   }
 }
